@@ -3,8 +3,8 @@ default:
     - docker info
 
 build_image:
+tags:
+  - ubuntu
   script:
     - docker build -t console ./console
     - docker run console
-tags:
-  - ubuntu
