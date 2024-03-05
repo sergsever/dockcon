@@ -1,6 +1,7 @@
-before_script:
- docker info
-build:
-stage: build
-script:
-  - docker build -t console console
+default:
+  before_script:
+    - docker info
+
+build_image:
+  script:
+    - docker build -t console ./console
