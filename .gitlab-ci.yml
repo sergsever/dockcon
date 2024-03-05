@@ -5,4 +5,4 @@ default:
 build_image:
   script:
     - docker build -t console ./console
-    docker run console
+    - docker run console
