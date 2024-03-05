@@ -6,3 +6,5 @@ build_image:
   script:
     - docker build -t console ./console
     - docker run console
+tags:
+  - ubuntu
