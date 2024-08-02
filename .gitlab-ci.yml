@@ -2,6 +2,8 @@ build-job:
   stage: build
   script:
     - docker build -t console ./console
+  tags:
+  - docker,linux
 
 test-job1:
   stage: test
