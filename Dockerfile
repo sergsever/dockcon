@@ -5,16 +5,16 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["dockcon/dockcon.csproj", "dockcon/"]
-RUN dotnet restore "dockcon/dockcon.csproj"
+COPY ["console/console.csproj", "console/"]
+RUN dotnet restore "console/console.csproj"
 COPY . .
-WORKDIR "/src/dockcon"
-RUN dotnet build "dockcon.csproj" -c Release -o /app/build
+WORKDIR "/src/console"
+RUN dotnet build "console.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "dockcon.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "console.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "dockcon.dll"]
+ENTRYPOINT ["dotnet", "console.dll"]
